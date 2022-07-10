@@ -1,8 +1,42 @@
-# example_cal_area
+use std::f32::consts::PI;
 
-substrate入门第4课作业 
+trait Shape {
+    fn get_area(&self) -> f32;
+}
 
-```rust
+struct Circular {
+    r: f32,
+}
+struct Triangle {
+    height: f32,
+    width: f32,
+}
+struct Square {
+    width: f32,
+    height: f32,
+}
+
+impl Shape for Circular {
+    fn get_area(&self) -> f32 {
+        PI * self.r * self.r
+    }
+}
+impl Shape for Triangle {
+    fn get_area(&self) -> f32 {
+        (self.height * self.width) / 2_f32
+    }
+}
+impl Shape for Square {
+    fn get_area(&self) -> f32 {
+        self.height * self.width
+    }
+}
+
+fn cal_area<T: Shape>(input: T) -> f32 {
+    let area = input.get_area();
+    area
+}
+
 fn main() {
     let circular = Circular { r: 4.0 };
     let circular_area = cal_area(circular);
@@ -25,4 +59,3 @@ fn main() {
     assert_eq!(square_area, 12.0 * 15.0);
     println!("the square area is: {}", square_area);
 }
-```
