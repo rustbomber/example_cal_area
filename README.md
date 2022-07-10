@@ -26,3 +26,5 @@ fn main() {
     println!("the square area is: {}", square_area);
 }
 ```
+
+![](https://github.com/rustbomber/example_cal_area/blob/202227d72030443e83e3b13dca8d50d7ff55ee20/screen.png)
